@@ -1,0 +1,130 @@
+english::choose_mode
+CHOOSE MODE
+;
+russian::choose_mode
+РЕЖИМ ИГРЫ
+;
+russian::u_loose
+ВЫ ПРОИГРАЛИ!
+;
+english::u_loose
+YOU LOOSE!
+;
+english::shop
+SHOP
+;
+russian::shop
+МАГАЗИН
+;
+russian::apply
+Применить
+;
+russian::setts_language
+Язык
+;
+russian::music
+Музыка
+;
+russian::sound
+Звуки
+;
+english::sound
+Sound Volume
+;
+english::music
+Music Volume
+;
+english::setts_language
+Language
+;
+english::apply
+Apply
+;
+russian::reset
+сбросить настройки
+;
+english::wellcome
+Wellcome
+;
+russian::wellcome
+Добро пожаловать!
+;
+english::urstats
+Your game statistics:
+;
+russian::urstats
+Статистика игры:
+;
+english::cl_hisc
+Classic high score :
+;
+english::su_hisc
+Survival high score :
+;
+russian::cl_hisc
+Рекорд в "Classic" :
+;
+russian::su_hisc
+Рекорд в "Survival" :
+;
+
+russian::su_attmpts
+Попыток в "Survival":
+;
+russian::cl_attmpts
+Попыток в "Classic":
+;
+russian::total_attmpts
+Всего попыток:
+;
+english::su_attmpts
+Survival mode attempts:
+;
+english::cl_attmpts
+Classic mode attempts:
+;
+english::total_attmpts
+Total attempts:
+;
+english::heal
+Heal
+;
+english::hitPoints
+Hit Points
+;
+english::polygonVar
+Polygons
+;
+english::moneyVelocity
+Money Boost
+;
+russian::heal
+Лечение
+;
+russian::hitPoints
+Жизни
+;
+russian::polygonVar
+Фигуры
+;
+russian::moneyVelocity
+Заработок
+;
+english::maxLVL
+Maximum level
+;
+english::upgradeCost
+Upgarde:
+;
+russian::upgradeCost
+Улучшить :
+;
+russian::comSoon
+Скоро выйдет
+;
+english::comSoon
+COMING SOON!
+;
+
+
+

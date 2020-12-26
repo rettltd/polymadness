@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46667"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="shopHP.svg"
+   inkscape:export-filename="/home/alldone/Erik/qt/f21/test3_sst/icons/shopHP.png"
+   inkscape:export-xdpi="96.000008"
+   inkscape:export-ydpi="96.000008">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="177.93793"
+     inkscape:cy="189.06601"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     showborder="true"
+     units="px"
+     inkscape:window-width="1680"
+     inkscape:window-height="996"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-midpoints="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-161.53332)">
+    <rect
+       id="rect34"
+       width="105.82789"
+       height="30.21174"
+       x="16.437201"
+       y="182.00999"
+       style="fill:none;stroke:#000000;stroke-width:2.4097259;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       ry="5.4638257" />
+    <rect
+       ry="5.4638257"
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1.63771021;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       y="182.00999"
+       x="16.437201"
+       height="30.21174"
+       width="48.880871"
+       id="rect841" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(0,82.55)">
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:6.31622267;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect846"
+       width="4.4399223"
+       height="45.912834"
+       x="29.381601"
+       y="-21.794024" />
+    <rect
+       y="-54.64687"
+       x="-1.0489985"
+       height="46.090618"
+       width="4.4227967"
+       id="rect848"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:6.31622267;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="rotate(90)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:63.24477005px;line-height:1.25;font-family:Arimo;-inkscape-font-specification:'Arimo, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.58111918"
+       x="70.495811"
+       y="22.501493"
+       id="text852"
+       transform="scale(0.83478468,1.1979137)"><tspan
+         sodipodi:role="line"
+         id="tspan850"
+         x="70.495811"
+         y="22.501493"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:63.24477005px;font-family:Arimo;-inkscape-font-specification:'Arimo, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:1.58111918">HP</tspan></text>
+  </g>
+</svg>

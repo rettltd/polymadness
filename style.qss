@@ -1,0 +1,238 @@
+QPushButton{
+        border-style: flat;
+        border-color:#000000;
+        border-style: solid;
+        color: rgb(58,58,58);
+        background-color: #a5a5a5;
+
+
+
+    }
+
+QPushButton:pressed{
+        border-style: flat;
+
+
+        border-style: solid;
+        color: #000000;
+
+        background-color: #828282;
+    }
+    QToolButton{
+            border-style: flat;
+            border-color:#000000;
+            border-style: solid;
+            color: rgb(58,58,58);
+            background-color: #a5a5a5;
+
+
+
+        }
+    QToolButton:hover{
+            border-style: flat;
+
+            border-color:#000000;
+            border-style: solid;
+            color: #000000;
+
+            background-color: #8a8a8a;
+        }
+
+    QToolButton:pressed{
+            border-style: flat;
+
+
+            border-style: solid;
+            color: #000000;
+
+            background-color: #828282;
+        }
+
+QPushButton:disabled{
+        border-style: outset;
+        border-width: 2px;
+        border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+        border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+        border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+        border-bottom-color: rgb(58, 58, 58);
+        border-bottom-width: 1px;
+        border-style: solid;
+        color: rgb(0, 0, 0);
+        padding: 6px;
+        background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(77, 77, 77, 255));
+    }
+    QWidget
+    {
+    background-color:  #a5a5a5;
+    }
+QGraphicsView{
+    background-color:#c3c3c3;
+
+    }
+QLabel{
+    background-color:#a5a5a5;
+
+    }
+ QLCDNumber {
+        border-style: flat;
+        background-color: #a5a5a5;
+
+
+
+
+    }
+    QProgressBar {
+            border-style:flat;
+            text-align: center;
+
+            font-style: bold;
+            color: #000000;
+
+
+            border-color:#000000;
+            border-style: inset;
+    }
+
+    QProgressBar::chunk {
+            background-color: qlineargradient(spread:pad, x1:0.5, y1:0.7, x2:0.5, y2:0.3, stop:0 rgba(0, 200, 0, 255), stop:1 rgba(30, 230, 30, 255));
+
+    }
+    QScrollBar:horizontal
+    {
+        height: 1.5ex;
+        margin: 0.3ex 1.5ex 0.3ex 1.5ex;
+        border: 0.1ex transparent #2A2929;
+        border-radius: 0.4ex;
+        background-color: #8a8a8a;
+    }
+
+    QScrollBar::handle:horizontal
+    {
+        background-color: #5b5b5b;
+        min-width: 0.5ex;
+        border-radius: 0.4ex;
+    }
+
+    QScrollBar::add-line:horizontal
+    {
+        margin: 0px 0.3ex 0px 0.3ex;
+        border-image: url(:/dark/right_arrow_disabled1.svg);
+        width: 1ex;
+        height: 1ex;
+        subcontrol-position: right;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::sub-line:horizontal
+    {
+        margin: 0ex 0.3ex 0ex 0.3ex;
+        border-image: url(:/dark/left_arrow_disabled1.svg);
+        width: 1ex;
+        height: 1ex;
+        subcontrol-position: left;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:horizontal:hover,
+    QScrollBar::add-line:horizontal:on
+    {
+        border-image: url(:/dark/right_arrow1.svg);
+        width: 1ex;
+        height: 1ex;
+        subcontrol-position: right;
+        subcontrol-origin: margin;
+    }
+
+
+    QScrollBar::sub-line:horizontal:hover,
+    QScrollBar::sub-line:horizontal:on
+    {
+        border-image: url(:/dark/left_arrow1.svg);
+        width: 1ex;
+        height: 1ex;
+        subcontrol-position: left;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::up-arrow:horizontal,
+    QScrollBar::down-arrow:horizontal
+    {
+        background: none;
+    }
+
+
+    QScrollBar::add-page:horizontal,
+    QScrollBar::sub-page:horizontal
+    {
+        background: none;
+    }
+
+    QScrollBar:vertical
+    {
+        background-color: #2A2929;
+        width: 1.5ex;
+        margin: 1.5ex 0.3ex 1.5ex 0.3ex;
+        border: 0.1ex transparent #2A2929;
+        border-radius: 0.4ex;
+    }
+
+    QScrollBar::handle:vertical
+    {
+        background-color: #3daee9;
+        min-height: 0.5ex;
+        border-radius: 0.4ex;
+    }
+
+    QScrollBar::sub-line:vertical
+    {
+        margin: 0.3ex 0ex 0.3ex 0ex;
+        border-image: url(:/dark/up_arrow_disabled.svg);
+        height: 1ex;
+        width: 1ex;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:vertical
+    {
+        margin: 0.3ex 0ex 0.3ex 0ex;
+        border-image: url(:/dark/down_arrow_disabled.svg);
+        height: 1ex;
+        width: 1ex;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::sub-line:vertical:hover,
+    QScrollBar::sub-line:vertical:on
+    {
+
+        border-image: url(:/dark/up_arrow.svg);
+        height: 1ex;
+        width: 1ex;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+
+    QScrollBar::add-line:vertical:hover,
+    QScrollBar::add-line:vertical:on
+    {
+        border-image: url(:/dark/down_arrow.svg);
+        height: 1ex;
+        width: 1ex;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+    {
+        background: none;
+    }
+
+
+    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+    {
+        background: none;
+    }
+

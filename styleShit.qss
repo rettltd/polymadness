@@ -1,0 +1,314 @@
+QPushButton{
+        border-style: outset;
+        border-width: 3px;
+        border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0  #000000,  #000000);
+        border-right-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0  #000000,  #000000);
+        border-left-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0  #000000,  #000000);
+        border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0  #000000,  #000000);
+        border-bottom-width: 3px;
+        border-style: solid;
+        color: rgb(58,58,58);
+        padding: 6px;
+
+}
+QPushButton:hover{
+        border-style: outset;
+        border-width: 2px;
+        border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 #2a2e26, stop:1 #262626);
+        border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 #2a2e26, stop:1 #262626);
+        border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 #2a2e26, stop:1 #262626);
+        border-bottom-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 #2a2e26, stop:1 #262626);
+        border-bottom-width: 1px;
+        border-style: solid;
+        color: rgb(255, 255, 255);
+        padding: 6px;
+        background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 #a5a5a5, stop:1 #a5a5a5);
+}
+
+QPushButton:pressed{
+        border-style: outset;
+        border-width: 2px;
+        border-top-color: #000000;
+        border-right-color: #000000;
+        border-left-color: #000000;
+        border-bottom-color: #000000;
+        border-bottom-width: 1px;
+        border-style: solid;
+        color: rgb(255, 255, 255);
+        padding: 6px;
+        background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 #000000, stop:1 #000000);
+}
+
+QPushButton:disabled{
+        border-style: outset;
+        border-width: 2px;
+        border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+        border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+        border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+        border-bottom-color: rgb(58, 58, 58);
+        border-bottom-width: 1px;
+        border-style: solid;
+        color: rgb(0, 0, 0);
+        padding: 6px;
+        background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(77, 77, 77, 255));
+}
+
+QScrollBar:horizontal
+{
+    height: 1.5ex;
+    margin: 0.3ex 1.5ex 0.3ex 1.5ex;
+    border: 0.1ex transparent #2A2929;
+    border-radius: 0.4ex;
+    background-color: #929690;
+}
+
+QScrollBar::handle:horizontal
+{
+    background-color: #3daee9;
+    min-width: 0.5ex;
+    border-radius: 0.4ex;
+}
+
+QScrollBar::add-line:horizontal
+{
+    margin: 0px 0.3ex 0px 0.3ex;
+    border-image: url(:/dark/right_arrow_disabled1.svg);
+    width: 1ex;
+    height: 1ex;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal
+{
+    margin: 0ex 0.3ex 0ex 0.3ex;
+    border-image: url(:/dark/left_arrow_disabled1.svg);
+    width: 1ex;
+    height: 1ex;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:horizontal:hover,
+QScrollBar::add-line:horizontal:on
+{
+    border-image: url(:/dark/right_arrow1.svg);
+    width: 1ex;
+    height: 1ex;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+
+QScrollBar::sub-line:horizontal:hover,
+QScrollBar::sub-line:horizontal:on
+{
+    border-image: url(:/dark/left_arrow1.svg);
+    width: 1ex;
+    height: 1ex;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:horizontal,
+QScrollBar::down-arrow:horizontal
+{
+    background: none;
+}
+
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal
+{
+    background: none;
+}
+
+QScrollBar:vertical
+{
+    background-color: #2A2929;
+    width: 1.5ex;
+    margin: 1.5ex 0.3ex 1.5ex 0.3ex;
+    border: 0.1ex transparent #2A2929;
+    border-radius: 0.4ex;
+}
+
+QScrollBar::handle:vertical
+{
+    background-color: #3daee9;
+    min-height: 0.5ex;
+    border-radius: 0.4ex;
+}
+
+QScrollBar::sub-line:vertical
+{
+    margin: 0.3ex 0ex 0.3ex 0ex;
+    border-image: url(:/dark/up_arrow_disabled.svg);
+    height: 1ex;
+    width: 1ex;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical
+{
+    margin: 0.3ex 0ex 0.3ex 0ex;
+    border-image: url(:/dark/down_arrow_disabled.svg);
+    height: 1ex;
+    width: 1ex;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical:hover,
+QScrollBar::sub-line:vertical:on
+{
+
+    border-image: url(:/dark/up_arrow.svg);
+    height: 1ex;
+    width: 1ex;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+
+QScrollBar::add-line:vertical:hover,
+QScrollBar::add-line:vertical:on
+{
+    border-image: url(:/dark/down_arrow.svg);
+    height: 1ex;
+    width: 1ex;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+{
+    background: none;
+}
+
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+    background: none;
+}
+
+
+
+
+
+QCheckBox
+{
+    spacing: 0.5ex;
+    outline: none;
+    color: #eff0f1;
+    margin-bottom: 0.2ex;
+    opacity: 200;
+}
+
+QCheckBox:disabled
+{
+    color: #76797c;
+}
+
+QGroupBox::indicator
+{
+    margin-left: 0.2ex;
+}
+
+QCheckBox::indicator:unchecked,
+QCheckBox::indicator:unchecked:focus
+{
+    border-image: url(:/dark/checkbox_unchecked_disabled.svg);
+}
+
+QCheckBox::indicator:unchecked:hover,
+QCheckBox::indicator:unchecked:pressed,
+QGroupBox::indicator:unchecked:hover,
+QGroupBox::indicator:unchecked:focus,
+QGroupBox::indicator:unchecked:pressed
+{
+    border: none;
+    border-image: url(:/dark/checkbox_unchecked.svg);
+}
+
+QCheckBox::indicator:checked
+{
+    border-image: url(:/dark/checkbox_checked.svg);
+}
+
+QCheckBox::indicator:checked:hover,
+QCheckBox::indicator:checked:focus,
+QCheckBox::indicator:checked:pressed,
+QGroupBox::indicator:checked:hover,
+QGroupBox::indicator:checked:focus,
+QGroupBox::indicator:checked:pressed
+{
+    border: none;
+    border-image: url(:/dark/checkbox_checked.svg);
+}
+
+QCheckBox::indicator:indeterminate
+{
+    border-image: url(:/dark/checkbox_indeterminate.svg);
+}
+
+QCheckBox::indicator:indeterminate:focus,
+QCheckBox::indicator:indeterminate:hover,
+QCheckBox::indicator:indeterminate:pressed
+{
+    border-image: url(:/dark/checkbox_indeterminate.svg);
+}
+
+QCheckBox::indicator:indeterminate:disabled
+{
+    border-image: url(:/dark/checkbox_indeterminate_disabled.svg);
+}
+
+QCheckBox::indicator:checked:disabled,
+QGroupBox::indicator:checked:disabled
+{
+    border-image: url(:/dark/checkbox_checked_disabled.svg);
+}
+
+QCheckBox::indicator:unchecked:disabled,
+QGroupBox::indicator:unchecked:disabled
+{
+    border-image: url(:/dark/checkbox_unchecked_disabled.svg);
+}
+
+
+
+QProgressBar {
+        text-align: center;
+
+        color: #000000;
+        border-width: 4px;
+
+        border-color:#000000;
+        border-style: inset;
+}
+
+QProgressBar::chunk {
+        background-color: qlineargradient(spread:pad, x1:0.5, y1:0.7, x2:0.5, y2:0.3, stop:0 rgba(0, 200, 0, 255), stop:1 rgba(30, 230, 30, 255));
+
+}
+QLCDNumber {
+    background-color: #676767;
+    color: #ffffff;
+
+}
+QLCDNumber::disabled {
+    background-color: #4e4e4e;
+    color: #54d579; rgb(58, 58, 58);
+}
+QFrame {
+    border-width: 2px;
+    border-style: inset;
+    border-color: rgba(58, 58, 58, 128);
+}
+QLabel {
+    border-width: 2px;
+    border-style: inset;
+    border-color: rgba(58, 58, 58, 128);
+}
+

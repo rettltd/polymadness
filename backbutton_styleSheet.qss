@@ -1,0 +1,6 @@
+PushButton {
+    border-image: url(:/button_back.svg);
+}
+PushButton:pressed{
+    border-image: url(button_back_pushed.svg);
+}
