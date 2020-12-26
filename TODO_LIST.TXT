@@ -5,3 +5,8 @@
 1. прозрачные в меню
 2. редизайн шопа
 3. игра почти везде
+TODO
+1)stylesheet
+2)colors
+3)same for shop and so
+4)STYLE?
