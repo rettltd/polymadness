@@ -1,11 +1,9 @@
 #include "game.h"
 #include "polyn69.h"
 #include "playmode.h"
+#include <QRandomGenerator>
+#define qrand() QRandomGenerator::global()->generate()
 
-
-/*sound Game::poped;
-sound Game::boom12;
-sound Game::offf;*/
 QSoundEffect Game::poped;
 QSoundEffect Game::boom12;
 QSoundEffect Game::offf;

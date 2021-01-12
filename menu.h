@@ -48,6 +48,7 @@ private:
     char result_flag=0;
     qreal rad123;
     float speed=1;
+
 };
 
 #endif // MENU_H

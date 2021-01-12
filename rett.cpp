@@ -6,7 +6,8 @@
 #include <QDebug>
 #include "languages.h"
 #include <QTimer>
-
+#include <QRandomGenerator>
+#define qrand() QRandomGenerator::global()->generate()
 
 int fuckinShit::x, fuckinShit::y;
 //sound rett::button_pop;

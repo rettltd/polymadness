@@ -2,8 +2,11 @@
 #include <QTransform>
 #include <QPolygonF>
 #include <QPainterPath>
+#include <QRandomGenerator>
 #include <window.h>
 #include <math.h>
+
+#define qrand() QRandomGenerator::global()->generate()
 
 QColor polyn69::cols[16]{
                         QColor(0xb3,0xca,0xfe,0xf0),QColor(0xfe,0xb3,0xca,0xf0),QColor(0xd3,0x2f,0x2f,0xf0),
@@ -21,6 +24,11 @@ polyn69::polyn69(qreal& r,int &vx, int &vy, float &boost)
     spawn1(vx, vy, r, boost);
 }
 
+polyn69::polyn69()
+{
+
+}
+
 void polyn69::countCentr()
 {
     int it = 0;
@@ -30,6 +38,13 @@ void polyn69::countCentr()
     }
     xcenter = xcenter / qreal(it);
     ycenter = ycenter / qreal(it);
+}
+
+void polyn69::fadeoff(int percents)
+{
+    opacity -= percents;
+    if(opacity < 0) opacity = 0;
+    color.setAlpha(opacity);
 }
 
 
@@ -91,6 +106,11 @@ void polyn69::setVel(qreal v_, qreal angle_in_rad)
     velangle = angle_in_rad;
 }
 
+void polyn69::setCol(QColor col_)
+{
+    color = col_;
+}
+
 float polyn69::getPos(bool x_0___y_1)
 {
     return bool(x_0___y_1*ycenter + !x_0___y_1*xcenter);
@@ -99,6 +119,11 @@ float polyn69::getPos(bool x_0___y_1)
 QPointF polyn69::getPos()
 {
     return QPointF(xcenter, ycenter);
+}
+
+QColor polyn69::getCol()
+{
+    return color;
 }
 void polyn69::direct(float where_to_x, float where_to_y)
 {

@@ -8,9 +8,21 @@
 #include <QFontDatabase>
 #include "scale.h"
 
-Stats::Stats(QWidget *parent) : QWidget (parent)
+Stats::Stats(QWidget *parent) : QWidget (parent),
+    po1(aimcirc, vidx, vidy, rad123, speed)
 {
     setup_layout();
+
+    timer = new QTimer;
+    connect(timer, &QTimer::timeout, this, &Stats::tick);
+
+    timer->start(25);
+    game = new Game(result_flag, *native, *score12, *hbr, vidx, vidy, aimcirc, po1, rad123, speed);
+
+    game->setMode(2);
+
+    connect(native, &Widget::game_tapped, [=]{result_flag=1;});
+
 }
 
 Stats::~Stats()
@@ -18,6 +30,17 @@ Stats::~Stats()
     delete hiscor;
     delete back1;
     delete lay;
+    delete timer;
+    delete game;
+    delete native;
+    delete hbr;
+    delete score12;
+}
+///not in use so far
+void Stats::setGame(Widget *widg)
+{
+    native = widg;
+    //game = gameq;
 }
 
 void Stats::setFonts()
@@ -34,6 +57,16 @@ void Stats::setFonts()
     hiscor->setFont(font);
     font = scale().textResize(font,back1->text(),back1->size());
     back1->setFont(font);
+}
+
+void Stats::tick()
+{
+    //if(game->updateGame()) death_screen();
+    update();
+    native->tick();
+    hbr->update();
+    score12->update();
+    game->updateGame();
 }
 
 QString Stats::toScore(int sc)
@@ -89,11 +122,29 @@ void Stats::setup_layout()
     back1->setSizePolicy(sp);
     hiscor->setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred));
 
-    lay = new QVBoxLayout(this);
-    lay->setStretch(0,5);
-    lay->setStretch(1,1);
-    lay->addWidget(hiscor);
-    lay->addWidget(back1);
+    score12 = new score(this);
+    hbr = new healthbar(this);
+    score12->hide();
+    hbr->hide();
+    native = new Widget(vidx, vidy, aimcirc, po1, rad123, result_flag, this);
+    native->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
+    native->setFrameShape(QFrame::WinPanel);
+    native->setFrameStyle(QFrame::Sunken);
+    native->setLineWidth(1);
+
+    lay = new QGridLayout(this);
+    lay->setSpacing(0);
+    lay->setContentsMargins(0,0,0,0);
+    native->setStyleSheet("background-color: #779BF0;");
+    hiscor->setStyleSheet("background-color: rgba(0,0,0,50);");
+    back1->setStyleSheet("background-color: rgba(0,0,0,50);");
+    lay->addWidget(hiscor,0,0,5,1);
+    lay->addWidget(back1,5,0,1,1);
+    lay->addWidget(native,0,0,6,1);
+    native->lower();
     hiscor->setScaledContents(true);
     setLayout(lay);
+    vidx = native->sizeHint().width();
+    vidy = native->sizeHint().height();
+    native->lateinit();
 }

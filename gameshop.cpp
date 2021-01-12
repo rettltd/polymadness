@@ -278,12 +278,12 @@ void GameShop::setup_layout()
 {
     moneY = new money();
 
-    QSizePolicy sizePolicy(QSizePolicy::Ignored, QSizePolicy::Expanding);
+    QSizePolicy sizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
     QSizePolicy sizePolicy1(QSizePolicy::Ignored, QSizePolicy::Preferred);
     sizePolicy.setHorizontalStretch(1);
     sizePolicy.setVerticalStretch(1);
 
-    MainLay = new QVBoxLayout(this);
+    MainLay = new QGridLayout(this);
     MainLay->setSpacing(0);
     MainLay->setContentsMargins(0, 0, 0, 0);
 
@@ -332,7 +332,7 @@ void GameShop::setup_layout()
     button1->setObjectName("button1");
     button1->setSizePolicy(sizePolicy);
     area1->setFrameShape(QFrame::StyledPanel);
-    lvl1->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Preferred);
+    lvl1->setSizePolicy(sizePolicy);
     alay1->addWidget(cost1);
     alay1->addWidget(button1);
     alay1->addWidget(lvl1);
@@ -366,7 +366,7 @@ void GameShop::setup_layout()
     lvl2->setText(lvlFinal);
     setButtons(2);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    lvl2->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Preferred);
+    lvl2->setSizePolicy(sizePolicy);
 
 
     alay2->addWidget(cost2);
@@ -393,7 +393,7 @@ void GameShop::setup_layout()
     lvl3->setText(lvlFinal);
     setButtons(3);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    lvl3->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Preferred);
+    lvl3->setSizePolicy(sizePolicy);
 
     alay3->addWidget(cost3);
     alay3->addWidget(button3);
@@ -422,7 +422,7 @@ void GameShop::setup_layout()
   //  button4->setText("heal");
     area4->setFrameShape(QFrame::StyledPanel);
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    lvl4->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Preferred);
+    lvl4->setSizePolicy(sizePolicy);
 
     alay4->addWidget(cost4);
     alay4->addWidget(button4);
@@ -470,10 +470,10 @@ void GameShop::setup_layout()
     cost4->setScaledContents(true);
 
 
-    cost1->setSizePolicy(sizePolicy1);
-    cost2->setSizePolicy(sizePolicy1);
-    cost3->setSizePolicy(sizePolicy1);
-    cost4->setSizePolicy(sizePolicy1);
+    cost1->setSizePolicy(sizePolicy);
+    cost2->setSizePolicy(sizePolicy);
+    cost3->setSizePolicy(sizePolicy);
+    cost4->setSizePolicy(sizePolicy);
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
     lowLay = new QHBoxLayout();
@@ -482,17 +482,19 @@ void GameShop::setup_layout()
 
     button5->setObjectName("button5");
     button5->setText(language().lang(25));
-    button5->setSizePolicy(sizePolicy);//хз плохо или хорошо
-    button5->setStyleSheet("border-width: 1px");
+    button5->setSizePolicy(sizePolicy1);//хз плохо или хорошо
+    //button5->setStyleSheet("border-width: 1px");
 
     lowLay->addWidget(button5);
-    MainLay->addLayout(topLay);
-    MainLay->addLayout(gridLayout);
-    MainLay->addLayout(lowLay);
+    MainLay->addLayout(topLay, 0, 0, 1, 1);
+    MainLay->addLayout(gridLayout, 1, 0, 6, 1);
+    MainLay->addLayout(lowLay, 2, 7, 1, 1);
 
+    /*
     MainLay->setStretch(0, 1);
     MainLay->setStretch(1, 6);
     MainLay->setStretch(2, 1);
+    */
     qDebug() << lvl1->size();
     //font = scale().textResize(font,"Money Boost (10/10)",lvl1->size());
 }

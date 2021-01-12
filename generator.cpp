@@ -1,9 +1,12 @@
 #include "generator.h"
 #include <QTransform>
+#include <QRandomGenerator>
 #include <math.h>
 #include "widget.h"
 //#include <QDebug>
 #include "money.h"
+
+#define qrand() QRandomGenerator::global()->generate()
 
 QPolygonF polygonGeneretor::pol;
 
@@ -22,8 +25,10 @@ const QPolygonF &polygonGeneretor::polygon(qreal rad123){
 
     qreal a=0, b=0;
 
+    /*
     int verts;
     qreal k_in;
+    */
 
     pol.clear();
     switch (variable){
@@ -172,9 +177,135 @@ const QPolygonF &polygonGeneretor::polygon(qreal rad123){
         pol = QTransform().scale(scale, scale).map(pol);
         return pol;
 
+    case 256:
+
+        pol << QPointF( 0 ,  0 ) <<
+        QPointF( 10 ,  0 ) <<
+        QPointF( 10 ,  8 ) <<
+        QPointF( 0 ,  10 );
+        pol = QTransform().scale(scale, scale).map(pol);
+        return pol;
+
     default:
         return pol;
     }
+}
+
+const QPolygonF &polygonGeneretor::klax(qreal rad123, int type)
+{
+    const qint8 difffe = 2;
+    qint8 variable = qrand() % difffe;
+    qreal scale = (qrand()%1000/qreal(800) + 2.3)*rad123*0.22;
+
+    /*
+    qreal a=0, b=0;
+
+    int verts;
+    qreal k_in;
+*/
+    pol.clear();
+
+    if(type==1)//plus-cross figure
+    {
+        pol << QPointF( 2 ,  2 ) <<
+        QPointF( 8 ,  2 ) <<
+        QPointF( 8 ,  -2 ) <<
+        QPointF( 2 ,  -2 ) <<
+        QPointF( 2 ,  -8 ) <<
+        QPointF( -2 ,  -8 ) <<
+        QPointF( -2 ,  -2 ) <<
+        QPointF( -8 ,  -2 ) <<
+        QPointF( -8 ,  2 ) <<
+        QPointF( -2 ,  2 ) <<
+        QPointF( -2 ,  8 ) <<
+        QPointF( 2 ,  8 );
+        pol = QTransform().scale(scale, scale).map(pol);
+        return pol;
+    }
+    else if(type==2)
+    {
+        /*
+        pol << QPointF( 0 ,  0 ) <<
+        QPointF( 10 ,  0 ) <<
+        QPointF( 10 ,  8 ) <<
+        QPointF( 0 ,  10 );
+        */
+        int verts = qrand()%9+3;
+        qreal k_in = 1.4;
+        qreal rotA = 2*3.1416/double(verts);
+
+        pol.resize(verts*2);
+        pol[0].setX(0);
+        pol[0].setY(-rad123*10);
+
+        pol[verts].setX(0);
+        pol[verts].setY(rad123*10*k_in);
+
+        for(int i=1; i<verts; i++){
+            pol[2*i].setX(pol.at(i*2-2).x() * cos(rotA) - pol.at(i*2-2).y() * sin(rotA));
+            pol[2*i].setY(pol.at(i*2-2).y() * cos(rotA) + pol.at(i*2-2).x() * sin(rotA));
+
+            pol[(2*i+verts)%(verts*2)].setX(-k_in*pol.at(i*2).x());
+            pol[(2*i+verts)%(verts*2)].setY(-k_in*pol.at(i*2).y());
+        }
+
+        pol = QTransform().scale(scale, scale).map(pol);
+        return pol;
+    }
+
+    switch (variable)
+    {
+    case 0:
+        pol << QPointF( 0 ,  0 ) <<
+        QPointF( 10 ,  0 ) <<
+        QPointF( 10 ,  8 ) <<
+        QPointF( 0 ,  10 );
+        pol = QTransform().scale(scale, scale).map(pol);
+        return pol;
+    case 1:
+
+        pol << QPointF( 6.8 ,  0 ) <<
+        QPointF( 12.73,  -2.65 ) <<
+        QPointF( 15.17,  -5.32 ) <<
+        QPointF( 14.8,  -7.91 ) <<
+        QPointF( 12.9,  -11 ) <<
+        QPointF( 7.25 ,  -11 ) <<
+        QPointF( 6.26 ,  -10.47 ) <<
+        QPointF( 5.24,  -6.8 ) <<
+        QPointF( 3.52,  -5.2 ) <<
+        QPointF( 0.57,  -5.13 ) <<
+        QPointF( -0.87,  -6.26 ) <<
+        QPointF( -2.81 ,  -9.72 )<<
+        QPointF( -7.25 ,  -12.9 )<<
+               QPointF( -12 ,  -13.03 )<<
+               QPointF( -15.37 ,  -10.22 )<<
+               QPointF( -14.83 ,  -6.38 )<<
+               QPointF( -11.43 ,  -3.71 )<<
+               QPointF( -7.88 ,  -2.44 )<<
+               QPointF( -6.41 ,  -0.83 )<<
+               QPointF( -8.95 ,  2.64 )<<
+               QPointF( -9.09 ,  7.42 )<<
+               QPointF( -7.75 ,  8.59 )<<
+               QPointF( -4 ,  8.55 )<<
+               QPointF( 0 ,  6.58 )<<
+               QPointF( 2.2 ,  6.68 )<<
+               QPointF( 4.08 ,  9.05 )<<
+               QPointF( 5.85 ,  9.69 )<<
+               QPointF( 6.35 ,  8.92 )<<
+               QPointF( 4.94 ,  5 )<<
+               QPointF( 4.88 ,  1.84 );
+
+        pol = QTransform().scale(0.8*scale, 0.8*scale).map(pol);
+        return pol;
+    case 2:
+        pol << QPointF( 0 ,  0 ) <<
+        QPointF( 10 ,  0 ) <<
+        QPointF( 10 ,  8 ) <<
+        QPointF( 0 ,  10 );
+        pol = QTransform().scale(scale, scale).map(pol);
+        return pol;
+    }
+    return pol;
 }
 
 

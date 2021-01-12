@@ -5,6 +5,7 @@
 //#include <QImage>
 #include <QPixmap>
 #include <QColor>
+#include <QGraphicsOpacityEffect>
 #include <QBrush>
 menu::menu(QWidget *parent) : QWidget(parent),
   po1(aimcirc, vidx, vidy, rad123, speed)
@@ -15,7 +16,6 @@ menu::menu(QWidget *parent) : QWidget(parent),
     connect(timer, &QTimer::timeout, this, &menu::tick);
 
     timer->start(25);
-
     game = new Game(result_flag, *native, *score12, *hbr, vidx, vidy, aimcirc, po1, rad123, speed);
     game->setMode(2);
 
@@ -49,28 +49,6 @@ void menu::setup_layout()
     native->setFrameShape(QFrame::WinPanel);
     native->setFrameStyle(QFrame::Sunken);
     native->setLineWidth(1);
-   // to_game->setText("Play");
-   // to_sets->setText("Settings");
- /*  QPixmap img(":/try_playButton.png");
-  qWarning() << !img.isNull();
-   QIcon icon;
-   icon.addPixmap(img,QIcon::Normal,QIcon::Off);
-   to_game->setIcon(icon);*/
-  // to_game->setIconSize(to_game->size());
-   //qWarning() << img.isNull();
-  // QPixmap pix(":/icons/to_settings2.png");
-   //pix = pix.scaled(to_game->width(),to_game->height(),Qt::AspectRatioMode::KeepAspectRatioByExpanding);
-   //qDebug() << pix.height()<< "     " <<  to_game->height() << "\n";
-   //pix = pix.scaled(to_game->height(),to_game->height(),Qt::IgnoreAspectRatio,Qt::FastTransformation);//fromImage(img.scaled(to_game->height(),to_game->height(),Qt::IgnoreAspectRatio,Qt::FastTransformation));
-   //pix = pix.scaled(back->width()/pix.width(), back->height()/pix.height());//, Qt::IgnoreAspectRatio, Qt::FastTransformation);/ _kill_->setText("EXIT");
-   // to_game->setIcon(QIcon(pix));
-    //to_game->setIconSize(QSize(to_game->size()));
-    //qDebug() << to_game->size() << to_game->iconSize();
-    //qDebug() << pix.height() << pix.width();
-
-    // to_game->setIconSize(QSize(pix.height(), pix.width()));
-     //qDebug() <<  to_game->iconSize();
-    ///stats->setStyleSheet("*{border-image: url(:/icons/stats.png);}");
     QIcon icon;
     icon.addFile(QString::fromUtf8(":/icons/try_playButton.png"), QSize(), QIcon::Normal, QIcon::Off);
     to_game->setIcon(icon);
@@ -89,23 +67,7 @@ void menu::setup_layout()
     icon.addFile(QString::fromUtf8(":/icons/stats1.png"), QSize(), QIcon::Normal, QIcon::Off);
     stats->setIcon(icon);
     stats->setIconSize(QSize(150,150));
-    ///   to_game->setStyleSheet("*{border-image: url(:/icons/try_playButton.png);}");
-///
-//  to_game->setIconSize(QSize(to_game->height(),to_game->height()));
-   //to_game->setIcon(icon);
-                       // ":pressed{ border-image: url(:/icons/play_button_pressed.png);}");
-///    shop_button->setStyleSheet("*{border-image: url(:/icons/shop.png);}");
-                    //   ":pressed{ border-image: url(:/icons/home_button_flat_pressed.png);}");
-///    to_sets->setStyleSheet("*{border-image: url(:/icons/setting2.png);}");
-                     //      ":hover{ border-image: url(:/icons/to_settings1_pressed.png);}");
-    //ur_money->setFont(QFont("ubuntu-mono",10,QFont::Bold)); //???
-///    money_image->setStyleSheet("*{border-image: url(:/icons/Mmoney.png);}");
-                              //  "                                   background-color: #a5a5a5;}");
-     ///QBrush bru(QColor("#a5a5a5"));
-///  money_image->setBackgroundBrush(bru);a5a5a5
-  ///   saveNload().save("money",5000);
-  ///
-    //qDebug() << saveNload().valueInt("money");
+
     ur_money->display(money().getMooney());
 
     animated->setStyleSheet("background-color: #c3c3c3");
@@ -120,25 +82,34 @@ void menu::setup_layout()
     animated->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
 ///    hint->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
     money_image->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));//TODO квадратик
-   // to_game->setFixedWidth(to_game->height());
-
-   // lay->setAlignment(Qt::AlignCenter);
 
     animated->hide();
 
     lay = new QGridLayout(this);
     lay->setSpacing(0);
     lay->setContentsMargins(0,0,0,0);
+    //QGraphicsOpacityEffect *qgreff;
+    //qgreff = new QGraphicsOpacityEffect(this);
+    //qgreff->setOpacity(0.3);
+    //native->setGraphicsEffect(qgreff);
+    ur_money->setStyleSheet("background-color: rgba(0,0,0,50);");
+    to_game->setStyleSheet("background-color: rgba(0,0,0,50);");
+    to_sets->setStyleSheet("background-color: rgba(0,0,0,50);");
+    stats->setStyleSheet("background-color: rgba(0,0,0,50);");
+    shop_button->setStyleSheet("background-color: rgba(0,0,0,50);");
+    money_image->setStyleSheet("background-color: rgba(0,0,0,50);");
+    setStyleSheet("background-color: #779BF0;");
+    ur_money->setSegmentStyle(QLCDNumber::Flat);
+    lay->addWidget(native, 0, 0, 4, 7);
     lay->addWidget(ur_money, 0, 0, 1, 3);
     lay->addWidget(to_game, 0, 4, 1, 3);
     lay->addWidget(to_sets, 3, 2, 1, 3);
     lay->addWidget(stats, 3, 5, 1, 2);
     lay->addWidget(shop_button, 3, 0, 1, 2);
-    lay->addWidget(native, 1, 0, 2, 7);
-
     lay->addWidget(money_image, 0, 3, 1, 1);
-//    lay->addWidget(hint, 1, 0, 1, 7);
-    lay->setContentsMargins(4, 3, 4, 3);
+    native->lower();
+//    lay->addWidget(hint, 1, 0, 1, 7);//////0,5 // 1,1
+    ///lay->setContentsMargins(4, 3, 4, 3);
 //setStyleSheet(" background-color:  #a5a5a5;");
     //qDebug() << to_game->size();
    // to_game->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
@@ -156,11 +127,11 @@ void menu::setup_layout()
         lay->setColumnStretch(i, cols[i]);
     }
 
+    setLayout(lay);
+
     vidx = native->sizeHint().width();
     vidy = native->sizeHint().height();
     native->lateinit();
-
-    setLayout(lay);
 }
 
 menu::~menu()

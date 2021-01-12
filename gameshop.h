@@ -43,7 +43,7 @@ private:
     money *moneY;
 
 
-    QVBoxLayout *MainLay;//0
+    QGridLayout *MainLay;//0
 
     QHBoxLayout *topLay;//1
     QLCDNumber *lcdNumber;

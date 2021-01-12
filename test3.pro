@@ -30,6 +30,7 @@ SOURCES += \
         gameshop.cpp \
         generator.cpp \
         healthbar.cpp \
+        klaxlife.cpp \
         languagesre.cpp \
         main.cpp \
         menu.cpp \
@@ -55,6 +56,7 @@ HEADERS += \
     gameshop.h \
     generator.h \
     healthbar.h \
+    klaxlife.h \
     languagesre.h \
     menu.h \
     money.h \
