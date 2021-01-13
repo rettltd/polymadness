@@ -147,11 +147,11 @@ menu::~menu()
     delete money_image; money_image = nullptr;
     ///  delete money_label; money_label = nullptr;
     ///
-    delete timer;
-    delete game;
-    delete native;
-    delete hbr;
-    delete score12;
+    delete timer;timer=nullptr;
+    delete game;game=nullptr;
+    delete native;native=nullptr;
+    delete hbr;hbr=nullptr;
+    delete score12;score12=nullptr;
 }
 
 void menu::tick()

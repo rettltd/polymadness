@@ -1,3 +1,5 @@
+#ifndef GAMESHOP_H
+#define GAMESHOP_H
 #include <QLabel>
 #include <QPushButton>
 #include <QToolButton>
@@ -7,10 +9,13 @@
 #include <QFont>
 #include <QGraphicsOpacityEffect>
 #include "money.h"
-#ifndef GAMESHOP_H
-#define GAMESHOP_H
-
+#include <QTimer>
+#include "score.h"
+#include "healthbar.h"
+#include <QGraphicsView>
 #include <QWidget>
+#include "widget.h"
+#include "game.h"
 
 struct ShopButton{
 
@@ -35,6 +40,7 @@ public:
 public slots:
     int buttonProc();
     void setFonts();
+    void tick();
 
 private:
     QGraphicsOpacityEffect *eff1,*eff2,*eff3,*eff4;
@@ -89,6 +95,20 @@ private:
 
     //0
     void setup_layout();
+
+    //for background
+    healthbar *hbr;
+    Widget *native;
+    score *score12;
+   // void setup_layout();
+    Game *game;
+    int vidx, vidy;
+    QPolygonF aimcirc;
+    polyar po1;
+    char result_flag=0;
+    qreal rad123;
+    float speed=1;
+    QTimer *timer;
 };
 
 #endif // GAMESHOP_H

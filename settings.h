@@ -38,10 +38,11 @@ private:
     QScrollBar *sound_vol;
     QScrollBar *music_vol;
     //QComboBox *language_box;
-    QFrame *lang_icon;
+    //QFrame *lang_icon;
     QLabel *lang_label;
     QLabel *soundv;
     QLabel *musicv;
+    QLabel *background;
 
     QPushButton *rusian, *englih;
 
