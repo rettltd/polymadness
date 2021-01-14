@@ -3,6 +3,7 @@
 #include "languagesre.h"
 #include "game.h"
 #include "rett.h"
+#include "scale.h"
 #include <QLayout>
 #include <QFontDatabase>
 
@@ -57,15 +58,12 @@ settings::settings(QWidget *parent) : QWidget(parent)
 
 settings::~settings()
 {
-    //saveNload().saveAll();
     delete leave_tomenu;
     delete help;
     delete reset1;
     delete sound_vol;
     delete music_vol;
     delete background;
-    //delete language_box;
-   // delete lang_icon;
     delete lang_label;
     delete soundv;
     delete musicv;
@@ -89,40 +87,17 @@ void settings::changeSettings()
 
 void settings::changeSettsLanguage()
 {
-    /*lang_label->setText(language().lang(10));
-    soundv->setText(language().lang(12));
-    musicv->setText(language().lang(11));
-    if(LANGUAGE){
-        rusian->setStyleSheet("*{background-color: #828282;"
-                             "border-width: 2px;}");
-        englih->setStyleSheet("*{border-width: 1px;"
-                              "border-color: #828282;}");
-    }
-    else{
-        englih->setStyleSheet("*{background-color: #828282;"
-                              "border-width: 2px;}");
-        rusian->setStyleSheet("*{border-width: 1px;"
-                              "border-color: #828282;}");
-    }*/
+    //not in use
 }
 
-void settings::setup_layout()
+void settings::setFonts()
 {
-    leave_tomenu = new QPushButton(this);
+    //set icons
+
     QIcon icon;
     icon.addFile(QString::fromUtf8(":/icons/back_flat_right1.png"), QSize(), QIcon::Normal, QIcon::Off);
     leave_tomenu->setIcon(icon);
-    leave_tomenu->setIconSize(QSize(150,150));
-    help = new QPushButton(this);
-    reset1 = new QPushButton(this);
-    sound_vol = new QScrollBar(this);
-    music_vol = new QScrollBar(this);
-    rusian = new QPushButton(this);
-    englih = new QPushButton(this);
-    lang_label = new QLabel(this);
-    soundv = new QLabel(this);
-    musicv = new QLabel(this);
-    background = new QLabel(this);
+    leave_tomenu->setIconSize(leave_tomenu->size());
 
 
     /////THIS IS FOR FONT IN RESOURCES/////
@@ -134,26 +109,69 @@ void settings::setup_layout()
     font.setBold(true);
     font.setKerning(false);
     ///////////////////////////////////////
+
+    //set font size for text
+
+    font = scale().textResize(font,"Русский  ",rusian->size());
     rusian->setFont(font);
     englih->setFont(font);
+    font = scale().textResize(font,"HELP",help->size());
     help->setFont(font);
+    font = scale().textResize(font,language().lang(12),soundv->size());
     soundv->setFont(font);
     musicv->setFont(font);
+    font = scale().textResize(font,language().lang(10),soundv->size());
     lang_label->setFont(font);
     soundv->setAlignment(Qt::AlignCenter);
     musicv->setAlignment(Qt::AlignCenter);
     lang_label->setAlignment(Qt::AlignCenter);
     rusian->setText("Русский");
     englih->setText("English");
-    //ui stylesheet
+
+    //set text
+
+    lang_label->setText(language().lang(10));
+    sound_vol->setPageStep(50);
+    music_vol->setPageStep(50);
+    soundv->setText(language().lang(12));
+    musicv->setText(language().lang(11));
+    reset1->setText("APPLY");//todo
+    help->setText("HELP");//todo
+
+
+    //aditional settings for text in widgets
+
+    sound_vol->setValue(SOUND_VOL);
+    music_vol->setValue(MUSIC_VOL);
+    sound_vol->setOrientation(Qt::Orientation::Horizontal);
+    music_vol->setOrientation(Qt::Orientation::Horizontal);
+    lang_label->setAlignment(Qt::AlignmentFlag::AlignCenter);
+    soundv->setAlignment(Qt::AlignmentFlag::AlignCenter);
+    musicv->setAlignment(Qt::AlignmentFlag::AlignCenter);
+}
+
+void settings::setup_layout()
+{
+    //initialization
+
+    leave_tomenu = new QPushButton(this);
+    help = new QPushButton(this);
+    reset1 = new QPushButton(this);
+    sound_vol = new QScrollBar(this);
+    music_vol = new QScrollBar(this);
+    rusian = new QPushButton(this);
+    englih = new QPushButton(this);
+    lang_label = new QLabel(this);
+    soundv = new QLabel(this);
+    musicv = new QLabel(this);
+    background = new QLabel(this);
+
+    //set stylesheets
+
     setStyleSheet("background-color: #779BF0;");
     lang_label->setStyleSheet("background-color: #779BF0;");
     background->setStyleSheet("background-color: #779BF0;");
     setStyleSheet("background-color: #779BF0;");
-    //setStyleSheet("spacing: 0");
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     if(LANGUAGE){
         rusian->setStyleSheet("*{background-color: #3e5486;"
                              "border-width: 5px;"
@@ -173,9 +191,6 @@ void settings::setup_layout()
                               "border-bottom-right-radius: 7px;"
                               "border-top-right-radius: 7px;}");
     }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
     sound_vol->setStyleSheet("*{"
                              "background-color: rgba(0,0,0,50);"
                              "color: #3e5486;"
@@ -184,27 +199,9 @@ void settings::setup_layout()
                              "background-color: rgba(0,0,0,50);"
                              "}");
 
+    reset1->hide();//not in use
 
-    //leave_tomenu->setText("back");
-    help->setText("HELP");//todo
-    reset1->setText("APPLY");//todo
-
-    /////
-    reset1->hide();//за ненадобностью
-    /////
-    lang_label->setText(language().lang(10));
-    sound_vol->setPageStep(50);
-    music_vol->setPageStep(50);
-    soundv->setText(language().lang(12));
-    musicv->setText(language().lang(11));
-    sound_vol->setValue(SOUND_VOL);
-    music_vol->setValue(MUSIC_VOL);
-    sound_vol->setOrientation(Qt::Orientation::Horizontal);
-    music_vol->setOrientation(Qt::Orientation::Horizontal);
-
-    lang_label->setAlignment(Qt::AlignmentFlag::AlignCenter);
-    soundv->setAlignment(Qt::AlignmentFlag::AlignCenter);
-    musicv->setAlignment(Qt::AlignmentFlag::AlignCenter);
+    //set size policy
 
     QSizePolicy t = QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     leave_tomenu->setSizePolicy(t);
@@ -212,24 +209,15 @@ void settings::setup_layout()
     reset1->setSizePolicy(t);
     sound_vol->setSizePolicy(t);
     music_vol->setSizePolicy(t);
-    //language_box->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-  //  lang_icon->setSizePolicy(t);
     lang_label->setSizePolicy(t);
     soundv->setSizePolicy(t);
     musicv->setSizePolicy(t);
     englih->setSizePolicy(t); rusian->setSizePolicy(t);
     
+    //add all widgets to QGridLayout and setup layout
+
     lay1 = new QGridLayout(this);
     lay1->setContentsMargins(0,0,0,0);
-    lay1->setSpacing(0);
-    //////////////0,1,2,3,4,5,6,7
-    int row[8] = {2,1,3,1,3,1,3,1};
-    int col[8] = {1,50,50,50,50,1,0,0};
-    for(int i=0;i<8;i++){
-        lay1->setRowStretch(i, row[i]);
-        lay1->setColumnStretch(i, col[i]);
-    }
-
     lay1->addWidget(leave_tomenu, 0, 0, 1, 3);
     lay1->addWidget(help, 0, 3, 1, 2);
     lay1->addWidget(reset1, 7, 1, 1, 3);
@@ -240,9 +228,17 @@ void settings::setup_layout()
     lay1->addWidget(lang_label, 5, 0, 1, 6);
     lay1->addWidget(soundv, 3, 0, 1, 6);
     lay1->addWidget(musicv, 1, 0, 1, 6);
-    lay1->addWidget(background, 0, 0, 10,6);
+    lay1->addWidget(background, 0, 0, 14,6);
 
-    //background->hide();
+
+    lay1->setSpacing(0);
+    //////////////0,1,2,3,4,5,6,7
+    int row[8] = {1,1,4,1,4,1,4,3};
+    int col[8] = {1,50,50,50,50,1,0,0};
+    for(int i=0;i<8;i++){
+        lay1->setRowStretch(i, row[i]);
+        lay1->setColumnStretch(i, col[i]);
+    }
     background->lower();
     setLayout(lay1);
 }

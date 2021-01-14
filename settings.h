@@ -25,8 +25,9 @@ public:
     static int LANGUAGE;
 
 public slots:
-     void changeSettings();
-       void changeSettsLanguage();
+    void changeSettings();
+    void changeSettsLanguage();
+    void setFonts();
 signals:
     void lang_chd();
     void sound_chd();

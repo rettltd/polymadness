@@ -14,8 +14,8 @@ menu::menu(QWidget *parent) : QWidget(parent),
 
     timer = new QTimer;
     connect(timer, &QTimer::timeout, this, &menu::tick);
-
     timer->start(25);
+
     game = new Game(result_flag, *native, *score12, *hbr, vidx, vidy, aimcirc, po1, rad123, speed);
     game->setMode(2);
 
@@ -29,69 +29,40 @@ void menu::setup_layout()
     to_sets = new QPushButton(this);
     shop_button = new QPushButton(this);
     stats = new QPushButton(this);
-   /// money_label  = new QLabel(this);
     animated = new QGraphicsView(this);
     ur_money = new QLCDNumber(this);
-///    hint = new QLabel(this);
     money_image = new QPushButton(this);
 
 
-    QSizePolicy qspol(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
 
     native = new Widget(vidx, vidy, aimcirc, po1, rad123, result_flag, this);
     score12 = new score(this);
     hbr = new healthbar(this);
-    native->setSizePolicy(qspol);
-    score12->setSizePolicy(qspol);
+
     hbr->hide();
     score12->hide();
 
     native->setFrameShape(QFrame::WinPanel);
     native->setFrameStyle(QFrame::Sunken);
     native->setLineWidth(1);
-    QIcon icon;
-    icon.addFile(QString::fromUtf8(":/icons/try_playButton.png"), QSize(), QIcon::Normal, QIcon::Off);
-    to_game->setIcon(icon);
-    to_game->setIconSize(QSize(150,150));
-    icon.addFile(QString::fromUtf8(":/icons/shop.png"), QSize(), QIcon::Normal, QIcon::Off);
-    shop_button->setIcon(icon);
-    shop_button->setIconSize(QSize(150,150));
-    QIcon icon1;
-    icon1.addFile(QString::fromUtf8(":/icons/setting21.png"), QSize(), QIcon::Normal, QIcon::Off);
-    to_sets->setIcon(icon1);
-    to_sets->setIconSize(QSize(150,150));
-    icon.addFile(QString::fromUtf8(":/icons/Mmoney.png"), QSize(), QIcon::Normal, QIcon::Off);
-    money_image->setIcon(icon);
-    money_image->setIconSize(QSize(100,100));
-  //  QIcon icon2;
-    icon.addFile(QString::fromUtf8(":/icons/stats1.png"), QSize(), QIcon::Normal, QIcon::Off);
-    stats->setIcon(icon);
-    stats->setIconSize(QSize(150,150));
+
 
     ur_money->display(money().getMooney());
 
-    animated->setStyleSheet("background-color: #c3c3c3");
-    //money_label->setStyleSheet("*{border-image: url(:/icons/money_flat.png);}");
-
-  ///  money_label->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    to_game->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    to_sets->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    shop_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    stats->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    ur_money->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    animated->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-///    hint->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    money_image->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));//TODO квадратик
-
+    QSizePolicy qspol(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    native->setSizePolicy(qspol);
+    score12->setSizePolicy(qspol);
+    to_game->setSizePolicy(qspol);
+    to_sets->setSizePolicy(qspol);
+    shop_button->setSizePolicy(qspol);
+    stats->setSizePolicy(qspol);
+    ur_money->setSizePolicy(qspol);
+    animated->setSizePolicy(qspol);
+    money_image->setSizePolicy(qspol);//TODO квадратик
     animated->hide();
 
-    lay = new QGridLayout(this);
-    lay->setSpacing(0);
-    lay->setContentsMargins(0,0,0,0);
-    //QGraphicsOpacityEffect *qgreff;
-    //qgreff = new QGraphicsOpacityEffect(this);
-    //qgreff->setOpacity(0.3);
-    //native->setGraphicsEffect(qgreff);
+    animated->setStyleSheet("background-color: #c3c3c3");
     ur_money->setStyleSheet("background-color: rgba(0,0,0,50);");
     to_game->setStyleSheet("background-color: rgba(0,0,0,50);");
     to_sets->setStyleSheet("background-color: rgba(0,0,0,50);");
@@ -100,6 +71,11 @@ void menu::setup_layout()
     money_image->setStyleSheet("background-color: rgba(0,0,0,50);");
     setStyleSheet("background-color: #779BF0;");
     ur_money->setSegmentStyle(QLCDNumber::Flat);
+
+
+    lay = new QGridLayout(this);
+    lay->setSpacing(0);
+    lay->setContentsMargins(0,0,0,0);
     lay->addWidget(native, 0, 0, 4, 7);
     lay->addWidget(ur_money, 0, 0, 1, 3);
     lay->addWidget(to_game, 0, 4, 1, 3);
@@ -108,18 +84,10 @@ void menu::setup_layout()
     lay->addWidget(shop_button, 3, 0, 1, 2);
     lay->addWidget(money_image, 0, 3, 1, 1);
     native->lower();
-//    lay->addWidget(hint, 1, 0, 1, 7);//////0,5 // 1,1
-    ///lay->setContentsMargins(4, 3, 4, 3);
-//setStyleSheet(" background-color:  #a5a5a5;");
-    //qDebug() << to_game->size();
-   // to_game->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
-   // to_game->setFixedWidth(to_game->height());
 
-  //  lay->setAlignment(to_game,Qt::AlignCenter);
-   // qDebug() << to_game->size();
 
 ///////////////////0/1/2//3/4/5/6
-    int rows[7] = {3,1,16,3,0,0,0};
+    int rows[7] = {3,1,33,3,0,0,0};
     int cols[7] = {1,1,1 ,1,1,1,1};
 
     for(int i=0;i<7;i++){
@@ -141,12 +109,9 @@ menu::~menu()
     delete shop_button; shop_button = nullptr;
     delete stats; stats = nullptr;
     delete lay; lay= nullptr;
- ///   delete hint;
     delete ur_money; ur_money = nullptr;
     delete animated; animated = nullptr;
     delete money_image; money_image = nullptr;
-    ///  delete money_label; money_label = nullptr;
-    ///
     delete timer;timer=nullptr;
     delete game;game=nullptr;
     delete native;native=nullptr;
@@ -156,11 +121,34 @@ menu::~menu()
 
 void menu::tick()
 {
-    //if(game->updateGame()) death_screen();
     update();
     native->tick();
     hbr->update();
     score12->update();
     game->updateGame();
+}
+
+void menu::setFonts()
+{
+    QIcon icon;
+    icon.addFile(QString::fromUtf8(":/icons/try_playButton.png"), QSize(), QIcon::Normal, QIcon::Off);
+    to_game->setIcon(icon);
+    to_game->setIconSize(QSize(to_game->width(),to_game->height()));
+    icon.addFile(QString::fromUtf8(":/icons/shop.png"), QSize(), QIcon::Normal, QIcon::Off);
+    shop_button->setIcon(icon);
+    shop_button->setIconSize(QSize(shop_button->width()*0.6,shop_button->height()*0.6));
+    icon = QIcon();
+    icon.addFile(QString::fromUtf8(":/icons/setting21.png"), QSize(), QIcon::Normal, QIcon::Off);
+    to_sets->setIcon(icon);
+    to_sets->setIconSize(QSize(to_sets->width()*0.6,to_sets->height()*0.6));
+    icon = QIcon();
+    icon.addFile(QString::fromUtf8(":/icons/Mmoney.png"), QSize(), QIcon::Normal, QIcon::Off);
+    money_image->setIcon(icon);
+    money_image->setIconSize(QSize(money_image->width()*0.6,money_image->height()*0.6));
+  //  QIcon icon2;
+    icon = QIcon();
+    icon.addFile(QString::fromUtf8(":/icons/stats1.png"), QSize(), QIcon::Normal, QIcon::Off);
+    stats->setIcon(icon);
+    stats->setIconSize(QSize(stats->width()*0.6,stats->height()*0.6));
 }
 

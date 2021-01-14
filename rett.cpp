@@ -63,6 +63,12 @@ void rett::set_menu()
     //connect(menu1234->shop_button, &QPushButton::clicked, this, [=]{shop->setFonts();});
     //connect(menu1234->money_image, &QPushButton::clicked, this, &rett::set_shop);
 
+    QTimer *timer1 = new QTimer();
+    timer1->callOnTimeout(menu1234, &menu::setFonts);
+    timer1->setTimerType(Qt::TimerType::PreciseTimer);
+    timer1->setSingleShot(1);
+    timer1->start(3);
+
     setCentralWidget(menu1234);
     flag=0;
 }
@@ -108,6 +114,11 @@ void rett::set_sets()
 
     setCentralWidget(sets);
 
+    QTimer *timer1 = new QTimer();
+    timer1->callOnTimeout(sets, &settings::setFonts);
+    timer1->setTimerType(Qt::TimerType::PreciseTimer);
+    timer1->setSingleShot(1);
+    timer1->start(3);
 
     flag=2;
 }

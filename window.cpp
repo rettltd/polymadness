@@ -249,13 +249,14 @@ void Window::setFonts()
 void Window::setup_layout()
 {
     //initialization
-    qgreff = new QGraphicsOpacityEffect;
-    qgreff->setOpacity(0.6);
+
     native = new Widget(vidx, vidy, aimcirc, po1, rad123, result_flag, this);
     score12 = new score(this);
     hbr = new healthbar(this);
     pause = new QPushButton(this);
     to_menu = new QPushButton(this);
+    /*qgreff = new QGraphicsOpacityEffect;
+    qgreff->setOpacity(0.6);*/
 
     //set stylesheets
 
@@ -284,10 +285,9 @@ void Window::setup_layout()
     score12->setLineWidth(1);
     score12->setSegmentStyle(QLCDNumber::Flat);
 
-    //to_menu shjuld be shown only if game is paused
+    //to_menu should be shown only if game is paused
 
     to_menu->hide();
-    //to_menu->setGraphicsEffect(qgreff);
 
     //add all widgets to QGridLayout and setup layout
 
@@ -299,11 +299,11 @@ void Window::setup_layout()
     layout->addWidget(score12, 0, 2, 1, 1);
     layout->addWidget(native, 1, 0, 2, 3);
 
-    int rows[3] = {1,7,1};
-    int colu[3] = {1,6,2};
-    for(int i12=0;i12<3;i12++){
-        layout->setRowStretch(i12, rows[i12]);
-        layout->setColumnStretch(i12, colu[i12]);
+    int rows[3] = {1,11,1};
+    int cols[3] = {1,6,2};
+    for(int i=0;i<3;i++){
+        layout->setRowStretch(i, rows[i]);
+        layout->setColumnStretch(i, cols[i]);
     }
 
     setLayout(layout);

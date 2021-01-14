@@ -35,7 +35,7 @@ void Playmode::setFonts()
 
     font.setBold(true);
     font.setKerning(false);
-    font = scale().textResize(font,language().lang(0),CHOOSE_GAME->size());
+    font = scale().textResize(font,language().lang(0)+"00",CHOOSE_GAME->size());
     CHOOSE_GAME->setFont(font);
     ///////////////////////////////////////
 
@@ -47,10 +47,7 @@ void Playmode::setFonts()
     back->setIcon(icon);
     back->setIconSize(back->size());
     //for each of playmode buttons
-    icon = QIcon();
-    icon.addFile(QString::fromUtf8("/icons/comSoon.png"), QSize(), QIcon::Normal, QIcon::Off);
-    game_2->setIcon(icon);
-    game_2->setIconSize(game_2->size());
+
 
     icon = QIcon();
     icon.addFile(QString::fromUtf8(":/icons/classic_mode.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -97,14 +94,14 @@ void Playmode::setup_layout()
 
     //size policy
 
-    back->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    game_classic->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    game_2->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-    game_survival->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
+    back->setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred));
+    game_classic->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred));
+    game_2->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred));
+    game_survival->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred));
 
     //set stylesheets
 
-    CHOOSE_GAME->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
+    CHOOSE_GAME->setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred));
     /* //old style buttons and icons
     game_2->setStyleSheet("*{border-image: url(:/icons/comSoon.png);}");
     game_classic->setStyleSheet( "*{border-image: url(:/icons/classic_mode.png);"
@@ -125,7 +122,7 @@ void Playmode::setup_layout()
     LAY_OUT->addWidget(CHOOSE_GAME, 0, 1, 1, 1);
     LAY_OUT->addWidget(background,0,0,5,6);
     background->lower();//on background
-    int rows[5] = {1,2,2,2,2};
+    int rows[5] = {1,2,3,3,3};
     int cols[5] = {2,5,0,0,0};
 
     for(int i=0;i<5;i++){

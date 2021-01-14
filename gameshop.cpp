@@ -528,9 +528,9 @@ void GameShop::setup_layout()
 
     lowLay->addWidget(button5);
     MainLay->addLayout(topLay, 0, 0, 1, 1);
-    MainLay->addLayout(gridLayout, 1, 0, 6, 1);
-    MainLay->addLayout(lowLay, 7, 0, 1, 1);
-    MainLay->addWidget(native, 0, 0,8,1);
+    MainLay->addLayout(gridLayout, 1, 0, 11, 1);
+    MainLay->addLayout(lowLay, 12, 0, 1, 1);
+    MainLay->addWidget(native, 0, 0,13,1);
     vidx = native->sizeHint().width();
     vidy = native->sizeHint().height();
     native->lower();

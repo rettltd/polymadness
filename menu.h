@@ -34,6 +34,7 @@ public:
 
 public slots:
     void tick();
+    void setFonts();
 private:
     QTimer *timer;
     QGridLayout *lay;

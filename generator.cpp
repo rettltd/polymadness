@@ -20,7 +20,7 @@ const QPolygonF &polygonGeneretor::polygon(qreal rad123){
 
     qint8 variable = qrand() % varitaions;
    /// qDebug() << variable;
-    qreal scale = (qrand()%1000/qreal(800) + 2.3)*rad123*0.22;
+    qreal scale =(qrand()%1000/qreal(800) + 2.3)*rad123*0.22;
    // variable = 7;
 
     qreal a=0, b=0;
