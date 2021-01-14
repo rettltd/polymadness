@@ -37,6 +37,13 @@ void Playmode::setFonts()
     font.setKerning(false);
     font = scale().textResize(font,language().lang(0)+"00",CHOOSE_GAME->size());
     CHOOSE_GAME->setFont(font);
+    font = scale().textResize(font,"Survival00f",game_survival->size());
+    game_survival->setFont(font);
+    game_classic->setFont(font);
+    game_2->setFont(font);
+    game_survival->setText("Survival");
+    game_classic->setText("Classic");
+    //game_2->setText("Coming..");
     ///////////////////////////////////////
 
     ///set icons///
@@ -49,6 +56,7 @@ void Playmode::setFonts()
     //for each of playmode buttons
 
 
+    /*
     icon = QIcon();
     icon.addFile(QString::fromUtf8(":/icons/classic_mode.png"), QSize(), QIcon::Normal, QIcon::Off);
     game_classic->setIcon(icon);
@@ -57,7 +65,8 @@ void Playmode::setFonts()
     icon = QIcon();
     icon.addFile(QString::fromUtf8(":/icons/surv_mode.png"), QSize(), QIcon::Normal, QIcon::Off);
     game_survival->setIcon(icon);
-    game_survival->setIconSize(game_survival->size());
+    game_survival->setIconSize(game_survival->size());*/
+
 }
 
 Playmode::~Playmode()
@@ -111,6 +120,13 @@ void Playmode::setup_layout()
     */
     setStyleSheet("background-color: #779BF0;");
     background->setStyleSheet("background-color: #779BF0;");
+    game_classic->setStyleSheet("border-width: 9px;");
+    game_survival->setStyleSheet("*{border-width: 9px;"
+                                 "border-top-width: 0px;}");
+    //game_2->setStyleSheet("border-width: 5px;");
+    game_classic->setStyleSheet("border-width: 9px;");
+    CHOOSE_GAME->setStyleSheet("background-color: rgba(0,0,0,50);");
+    back->setStyleSheet("background-color: rgba(0,0,0,50);");
 
     //add all widgets to QGridLayout and setup layout
 
@@ -122,7 +138,7 @@ void Playmode::setup_layout()
     LAY_OUT->addWidget(CHOOSE_GAME, 0, 1, 1, 1);
     LAY_OUT->addWidget(background,0,0,5,6);
     background->lower();//on background
-    int rows[5] = {1,2,3,3,3};
+    int rows[5] = {1,2,3,3,4};
     int cols[5] = {2,5,0,0,0};
 
     for(int i=0;i<5;i++){

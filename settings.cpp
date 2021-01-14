@@ -18,11 +18,11 @@ settings::settings(QWidget *parent) : QWidget(parent)
     connect(music_vol, &QScrollBar::valueChanged, this, &settings::changeSettings);
     connect(englih, &QPushButton::pressed, [=]{LANGUAGE = 0; emit lang_chd();
         englih->setStyleSheet("*{background-color: #3e5486;"
-                              "border-width: 5px;"
+                              "border-width: 10px;"
                               "border-top-left-radius: 7px;"
                               "border-bottom-left-radius: 7px;"
                               "}");
-        rusian->setStyleSheet("*{border-width: 3px;"
+        rusian->setStyleSheet("*{border-width: 6px;"
                               "border-color: rgba(0,0,0,170);"
                               "border-top-right-radius: 7px;"
                               "border-bottom-right-radius: 7px;}");});
@@ -40,10 +40,10 @@ settings::settings(QWidget *parent) : QWidget(parent)
     });
     connect(rusian, &QPushButton::pressed, [=]{LANGUAGE = 1; emit lang_chd();
         rusian->setStyleSheet("*{background-color: #3e5486;"
-                              "border-width: 5px;"
+                              "border-width: 10px;"
                               "border-top-right-radius: 7px;"
                               "border-bottom-right-radius: 7px;}");
-        englih->setStyleSheet("*{border-width: 3px;"
+        englih->setStyleSheet("*{border-width: 6px;"
                               "border-color: rgba(0,0,0,170);"
                               "border-bottom-left-radius: 7px;"
                               "border-top-left-radius: 7px;}");
@@ -115,12 +115,12 @@ void settings::setFonts()
     font = scale().textResize(font,"Русский  ",rusian->size());
     rusian->setFont(font);
     englih->setFont(font);
-    font = scale().textResize(font,"HELP",help->size());
+    font = scale().textResize(font,language().lang(12)+"12345678910",sound_vol->size());
     help->setFont(font);
-    font = scale().textResize(font,language().lang(12),soundv->size());
+    //font = scale().textResize(font,language().lang(12),soundv->size());
     soundv->setFont(font);
     musicv->setFont(font);
-    font = scale().textResize(font,language().lang(10),soundv->size());
+    //font = scale().textResize(font,language().lang(10),soundv->size());
     lang_label->setFont(font);
     soundv->setAlignment(Qt::AlignCenter);
     musicv->setAlignment(Qt::AlignCenter);
@@ -134,7 +134,7 @@ void settings::setFonts()
     sound_vol->setPageStep(50);
     music_vol->setPageStep(50);
     soundv->setText(language().lang(12));
-    musicv->setText(language().lang(11));
+    //musicv->setText(language().lang(11));
     reset1->setText("APPLY");//todo
     help->setText("HELP");//todo
 
@@ -174,19 +174,19 @@ void settings::setup_layout()
     setStyleSheet("background-color: #779BF0;");
     if(LANGUAGE){
         rusian->setStyleSheet("*{background-color: #3e5486;"
-                             "border-width: 5px;"
+                             "border-width: 10px;"
                               "border-top-right-radius: 7px;"
                               "border-bottom-right-radius: 7px;}");
-        englih->setStyleSheet("*{border-width: 3px;"
+        englih->setStyleSheet("*{border-width: 6px;"
                               "border-color: rgba(0,0,0,170);"
                               "border-top-left-radius: 7px;}");
     }
     else{
         englih->setStyleSheet("*{background-color: #3e5486;"
-                              "border-width: 5px;"
+                              "border-width: 10px;"
                               "border-top-left-radius: 7px;"
                               "border-bottom-left-radius: 7px;}");
-        rusian->setStyleSheet("*{border-width: 3px;"
+        rusian->setStyleSheet("*{border-width: 6px;"
                               "border-color: rgba(0,0,0,170);"
                               "border-bottom-right-radius: 7px;"
                               "border-top-right-radius: 7px;}");
@@ -200,6 +200,8 @@ void settings::setup_layout()
                              "}");
 
     reset1->hide();//not in use
+    //help->setStyleSheet("background-color: rgba(0,0,0,50);");
+    //leave_tomenu->setStyleSheet("background-color: rgba(0,0,0,50);");
 
     //set size policy
 

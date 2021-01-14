@@ -1,3 +1,6 @@
+/*
+*this class is taken from https://github.com/bricke/Qt-AES
+*/
 #ifndef QAESENCRYPTION_H
 #define QAESENCRYPTION_H
 
