@@ -134,7 +134,7 @@ void settings::setFonts()
     sound_vol->setPageStep(50);
     music_vol->setPageStep(50);
     soundv->setText(language().lang(12));
-    //musicv->setText(language().lang(11));
+    musicv->setText(language().lang(11));
     reset1->setText("APPLY");//todo
     help->setText("HELP");//todo
 

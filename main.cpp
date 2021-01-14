@@ -29,13 +29,13 @@ int main(int argc, char *argv[])
     settings::SOUND_VOL = saveNload().valueInt("soundVolume");
     settings::LANGUAGE = saveNload().valueInt("language");
 
-
+/*
     saveNload().save("hitPoints",money().encrypT(50));
     saveNload().save("moneyVel",money().encrypT(1));
     saveNload().save("polygonVariable",money().encrypT(8));
     saveNload().save("heal",money().encrypT(5));
     saveNload().save("money",money().encrypT(6955));
-
+*/
     rett ret;
 
     QFile file(":/style.qss");
