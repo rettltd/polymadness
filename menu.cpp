@@ -2,7 +2,6 @@
 #include "rett.h"
 #include "money.h"
 #include <QIcon>
-//#include <QImage>
 #include <QPixmap>
 #include <QColor>
 #include <QGraphicsOpacityEffect>

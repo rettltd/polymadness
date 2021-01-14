@@ -43,7 +43,7 @@ GameShop::~GameShop()
 
 void GameShop::setFonts()
 {
-    qDebug() << "Im here";
+    //qDebug() << "Im here";
     /////////////////////////////////////////
     ///____THIS IS FOR FONT IN RESOURCES___//
     /////////////////////////////////////////
@@ -57,7 +57,7 @@ void GameShop::setFonts()
     //font = scale().textResize(font,"###################",QSize(226,30));
     if(saveNload().valueString("languages") == "russian") font = scale().textResize(font,"Money Boost (10/10)",lvl1->size());
     else font = scale().textResize(font,"Money Boost (10/10)",lvl1->size());
-    qDebug() << "kk - -" << lvl1->size();
+    //qDebug() << "kk - -" << lvl1->size();
 
     lvl1->setFont(font);
     lvl2->setFont(font);
