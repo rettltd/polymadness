@@ -97,6 +97,5 @@ android {
 
     DISTFILES += \
         android/AndroidManifest.xml \
-        android/build.gradle \
-        android/res/values/libs.xml
+        android/build.gradle
 }

@@ -38,6 +38,7 @@ android {
 
     buildToolsVersion androidBuildToolsVersion
 
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -56,6 +57,14 @@ android {
     }
     defaultConfig {
         resConfigs "en"
+    }
+
+    buildTypes {
+        release {
+            //minifyEnabled true
+            //shrinkResources true
+            debuggable = false
+        }
     }
 
 }
