@@ -28,6 +28,7 @@ rett::rett(QWidget *parent) : QMainWindow(parent)
     musixPlayer.addToPlaylist(QUrl("qrc:/audio/track3.ogg"));
     musixPlayer.addToPlaylist(QUrl("qrc:/audio/sad1.ogg"));
     musixPlayer.addToPlaylist(QUrl("qrc:/audio/track2.ogg"));
+    musixPlayer.addToPlaylist(QUrl("qrc:/audio/track4.mp3"));
 
     musixPlayer.setPlaylist();
 
@@ -63,6 +64,12 @@ void rett::set_menu()
     //connect(menu1234->shop_button, &QPushButton::clicked, this, [=]{shop->setFonts();});
     //connect(menu1234->money_image, &QPushButton::clicked, this, &rett::set_shop);
 
+    QTimer *timer1 = new QTimer();
+    timer1->callOnTimeout(menu1234, &menu::setFonts);
+    timer1->setTimerType(Qt::TimerType::PreciseTimer);
+    timer1->setSingleShot(1);
+    timer1->start(3);
+
     setCentralWidget(menu1234);
     flag=0;
 }
@@ -71,9 +78,11 @@ void rett::set_game()
 {
     flag_proc();
     window = new Window(this, Playmode::MODE_OF_GAME);
-    //int x = qrand()%2;
-    //x= x*2 + 1;
-    musixPlayer.setCurrentTrack((qrand()%2)*2+1);
+
+    int x = qrand()%3;
+    int TRACKnumbers[3] = {1, 3, 4};
+
+    musixPlayer.setCurrentTrack(TRACKnumbers[x]);
 
     connect(window->pause, &QPushButton::clicked, [=]{button_pop.play();});
     connect(window->to_menu, &QPushButton::clicked, [=]{button_pop.play();});
@@ -84,7 +93,7 @@ void rett::set_game()
     connect(window, &Window::paused, [=]{musixPlayer.pause(); backgr=2;});
     connect(window, &Window::continued, [=]{musixPlayer.play(); backgr=0;});
     connect(window, &Window::dead, [=]{musixPlayer.setCurrentTrack(2);});
-    connect(window, &Window::restarted, [=]{musixPlayer.setCurrentTrack((qrand()%2)*2+1);});
+    connect(window, &Window::restarted, [=]{musixPlayer.setCurrentTrack(TRACKnumbers[x]);});
 
     QTimer *timer1 = new QTimer();
     timer1->callOnTimeout(window, &Window::setFonts);
@@ -108,6 +117,11 @@ void rett::set_sets()
 
     setCentralWidget(sets);
 
+    QTimer *timer1 = new QTimer();
+    timer1->callOnTimeout(sets, &settings::setFonts);
+    timer1->setTimerType(Qt::TimerType::PreciseTimer);
+    timer1->setSingleShot(1);
+    timer1->start(3);
 
     flag=2;
 }

@@ -2,11 +2,7 @@ QPushButton{
         border-style: flat;
         border-color:#000000;
         border-style: solid;
-        color: rgb(58,58,58);
-        background-color: #a5a5a5;
-
-
-
+        background-color: rgba(0,0,0,50);
     }
 
 QPushButton:pressed{
@@ -16,7 +12,7 @@ QPushButton:pressed{
         border-style: solid;
         color: #000000;
 
-        background-color: #828282;
+        background-color: rgba(0,0,0,125);
     }
     QToolButton{
             border-style: flat;
@@ -24,9 +20,6 @@ QPushButton:pressed{
             border-style: solid;
             color: rgb(58,58,58);
             background-color: #a5a5a5;
-
-
-
         }
     QToolButton:hover{
             border-style: flat;
@@ -63,19 +56,19 @@ QPushButton:disabled{
     }
     QWidget
     {
-    background-color:  #a5a5a5;
+    background-color:  rgba(0,0,0,50);
     }
 QGraphicsView{
-    background-color:#c3c3c3;
+    background-color:rgba(0,0,0,50);
 
     }
 QLabel{
-    background-color:#a5a5a5;
+    background-color:rgba(0,0,0,50);
 
     }
  QLCDNumber {
         border-style: flat;
-        background-color: #a5a5a5;
+        background-color:rgba(0,0,0,50);
 
 
 
@@ -103,12 +96,12 @@ QLabel{
         margin: 0.3ex 1.5ex 0.3ex 1.5ex;
         border: 0.1ex transparent #2A2929;
         border-radius: 0.4ex;
-        background-color: #8a8a8a;
+        background-color: rgba(0,0,0,50);
     }
 
     QScrollBar::handle:horizontal
     {
-        background-color: #5b5b5b;
+        background-color: #3e5486;
         min-width: 0.5ex;
         border-radius: 0.4ex;
     }
@@ -169,7 +162,7 @@ QLabel{
 
     QScrollBar:vertical
     {
-        background-color: #2A2929;
+        background-color: rgba(0,0,0,50);
         width: 1.5ex;
         margin: 1.5ex 0.3ex 1.5ex 0.3ex;
         border: 0.1ex transparent #2A2929;

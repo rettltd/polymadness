@@ -98,7 +98,7 @@ signals:
 private:
     void setup_layout();
     void game_processing();
-    QGraphicsOpacityEffect *qgreff;
+    //QGraphicsOpacityEffect *qgreff;
     QTimer *timer;
     qint8 gameflag=0; //game-0 / pause-1/ death-2
 

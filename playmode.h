@@ -27,7 +27,7 @@ signals:
     void ready();
 private:
     void setup_layout();
-
+    QLabel *background;//SHOULD BE FIXED(problems with background ss and global qss)
     QGridLayout *LAY_OUT;
     QLabel *CHOOSE_GAME;
 };

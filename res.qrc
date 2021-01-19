@@ -109,5 +109,6 @@
         <file>icons/setting21.png</file>
         <file>icons/stats1.png</file>
         <file>icons/classic_new.png</file>
+        <file>audio/track4.mp3</file>
     </qresource>
 </RCC>

@@ -38,6 +38,7 @@ android {
 
     buildToolsVersion androidBuildToolsVersion
 
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -54,4 +55,16 @@ android {
     lintOptions {
         abortOnError false
     }
+    defaultConfig {
+        resConfigs "en"
+    }
+
+    buildTypes {
+        release {
+            //minifyEnabled true
+            //shrinkResources true
+            debuggable = false
+        }
+    }
+
 }

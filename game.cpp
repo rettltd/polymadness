@@ -11,6 +11,7 @@ QSoundEffect Game::offf;
 Game::Game(char& flag, Widget& n, score& s, healthbar &h, int& vx, int& vy, QPolygonF& ac, polyar& p2, qreal& r123, float &sp)
     : touch_flag(flag), nativ(n), sc(s), bar(h), vidx(vx), vidy(vy), aimcirc(ac), po1(p2), rad123(r123), speed(sp)
 {
+    speed *= 2;
     poped.setSource(QUrl("qrc:/audio/sounds48/click.wav"));
     offf.setSource(QUrl("qrc:/audio/sounds48/miss.wav"));
     boom12.setSource(QUrl("qrc:/audio/sounds48/boom.wav"));

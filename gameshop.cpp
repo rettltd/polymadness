@@ -8,9 +8,19 @@
 #include <QSizeF>
 #include <QFontDatabase>
 #include "scale.h"
-GameShop::GameShop(QWidget* parent) : QWidget (parent)
+GameShop::GameShop(QWidget* parent) : QWidget (parent),
+    po1(aimcirc, vidx, vidy, rad123, speed)
 {
     setup_layout();
+    timer = new QTimer;
+    connect(timer, &QTimer::timeout, this, &GameShop::tick);
+
+    timer->start(25);
+    game = new Game(result_flag, *native, *score12, *hbr, vidx, vidy, aimcirc, po1, rad123, speed);
+    game->setMode(2);
+
+
+    connect(native, &Widget::game_tapped, [=]{result_flag=1;});
 }
 
 GameShop::~GameShop()
@@ -23,11 +33,17 @@ GameShop::~GameShop()
     delete info2;info2= nullptr;
     delete info3;info3= nullptr;
     delete info4;info4= nullptr;
+    delete timer;timer=nullptr;
+    delete game;game=nullptr;
+    delete native;native=nullptr;
+    delete hbr;hbr=nullptr;
+    delete score12;score12=nullptr;
+
 }
 
 void GameShop::setFonts()
 {
-    qDebug() << "Im here";
+    //qDebug() << "Im here";
     /////////////////////////////////////////
     ///____THIS IS FOR FONT IN RESOURCES___//
     /////////////////////////////////////////
@@ -41,7 +57,7 @@ void GameShop::setFonts()
     //font = scale().textResize(font,"###################",QSize(226,30));
     if(saveNload().valueString("languages") == "russian") font = scale().textResize(font,"Money Boost (10/10)",lvl1->size());
     else font = scale().textResize(font,"Money Boost (10/10)",lvl1->size());
-    qDebug() << "kk - -" << lvl1->size();
+    //qDebug() << "kk - -" << lvl1->size();
 
     lvl1->setFont(font);
     lvl2->setFont(font);
@@ -67,7 +83,7 @@ void GameShop::setFonts()
     QIcon icon;
     icon.addFile(QString::fromUtf8(":/icons/back_flat_left1.png"), QSize(), QIcon::Normal, QIcon::Off);
     back->setIcon(icon);
-    back->setIconSize(QSize(150,150));
+    back->setIconSize(back->size());
 
     icon = QIcon();
     icon.addFile(QString::fromUtf8(":/icons/shopHP.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -89,6 +105,15 @@ void GameShop::setFonts()
     button4->setStyleSheet("border-width: 1px;");
     button4->setIcon(icon);
     button4->setIconSize(button4->size());
+}
+
+void GameShop::tick()
+{
+    update();
+    native->tick();
+    hbr->update();
+    score12->update();
+    game->updateGame();
 }
 
 void GameShop::setButtons(int Nomb){
@@ -194,8 +219,8 @@ int GameShop::buttonProc()
     case 5:
 
         if(!isInform){
-            button5->setStyleSheet("*{border-width: 2px;"
-                                   "background-color:#828282;}");
+         //   button5->setStyleSheet("*{border-width: 2px;"
+          //                         "background-color:#828282;}");
             eff1->setOpacity(0.2);
             eff2->setOpacity(0.2);
             eff3->setOpacity(0.2);
@@ -225,7 +250,7 @@ int GameShop::buttonProc()
             isInform = 1;
         }
         else{
-            button5->setStyleSheet("*{border-width: 1px;}");
+       //     button5->setStyleSheet("*{border-width: 1px;}");
 
 
             eff1->setOpacity(1);
@@ -276,6 +301,20 @@ int GameShop::buttonProc()
 
 void GameShop::setup_layout()
 {
+    //GAME
+    native = new Widget(vidx, vidy, aimcirc, po1, rad123, result_flag, this);
+    score12 = new score(this);
+    hbr = new healthbar(this);
+    QSizePolicy qspol(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    native->setSizePolicy(qspol);
+    score12->setSizePolicy(qspol);
+    hbr->hide();
+    score12->hide();
+
+    native->setFrameShape(QFrame::WinPanel);
+    native->setFrameStyle(QFrame::Sunken);
+    native->setLineWidth(1);
+
     moneY = new money();
 
     QSizePolicy sizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
@@ -290,12 +329,14 @@ void GameShop::setup_layout()
     topLay = new QHBoxLayout();
     lcdNumber = new QLCDNumber(this);
     coinImg = new QGraphicsView(this);
-    coinImg->setStyleSheet("*{background-color: #a5a5a5;"
+    coinImg->setStyleSheet("*{background-color: rgba(0,0,0,50);"
                            "border-style: flat;}");
-    back = new QPushButton(this);
+    //coinImg->setStyle();
 
+    back = new QPushButton(this);
     lcdNumber->setSizePolicy(sizePolicy);
     lcdNumber->display(money().getMooney());
+    lcdNumber->setSegmentStyle(QLCDNumber::Flat);
     coinImg->setSizePolicy(sizePolicy);
     back->setSizePolicy(sizePolicy);
 
@@ -332,7 +373,7 @@ void GameShop::setup_layout()
     button1->setObjectName("button1");
     button1->setSizePolicy(sizePolicy);
     area1->setFrameShape(QFrame::StyledPanel);
-    lvl1->setSizePolicy(sizePolicy);
+    lvl1->setSizePolicy(sizePolicy1);
     alay1->addWidget(cost1);
     alay1->addWidget(button1);
     alay1->addWidget(lvl1);
@@ -366,7 +407,7 @@ void GameShop::setup_layout()
     lvl2->setText(lvlFinal);
     setButtons(2);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    lvl2->setSizePolicy(sizePolicy);
+    lvl2->setSizePolicy(sizePolicy1);
 
 
     alay2->addWidget(cost2);
@@ -393,7 +434,7 @@ void GameShop::setup_layout()
     lvl3->setText(lvlFinal);
     setButtons(3);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    lvl3->setSizePolicy(sizePolicy);
+    lvl3->setSizePolicy(sizePolicy1);
 
     alay3->addWidget(cost3);
     alay3->addWidget(button3);
@@ -422,7 +463,7 @@ void GameShop::setup_layout()
   //  button4->setText("heal");
     area4->setFrameShape(QFrame::StyledPanel);
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    lvl4->setSizePolicy(sizePolicy);
+    lvl4->setSizePolicy(sizePolicy1);
 
     alay4->addWidget(cost4);
     alay4->addWidget(button4);
@@ -470,10 +511,10 @@ void GameShop::setup_layout()
     cost4->setScaledContents(true);
 
 
-    cost1->setSizePolicy(sizePolicy);
-    cost2->setSizePolicy(sizePolicy);
-    cost3->setSizePolicy(sizePolicy);
-    cost4->setSizePolicy(sizePolicy);
+    cost1->setSizePolicy(sizePolicy1);
+    cost2->setSizePolicy(sizePolicy1);
+    cost3->setSizePolicy(sizePolicy1);
+    cost4->setSizePolicy(sizePolicy1);
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
     lowLay = new QHBoxLayout();
@@ -487,14 +528,14 @@ void GameShop::setup_layout()
 
     lowLay->addWidget(button5);
     MainLay->addLayout(topLay, 0, 0, 1, 1);
-    MainLay->addLayout(gridLayout, 1, 0, 6, 1);
-    MainLay->addLayout(lowLay, 2, 7, 1, 1);
-
-    /*
-    MainLay->setStretch(0, 1);
-    MainLay->setStretch(1, 6);
-    MainLay->setStretch(2, 1);
-    */
-    qDebug() << lvl1->size();
+    MainLay->addLayout(gridLayout, 1, 0, 11, 1);
+    MainLay->addLayout(lowLay, 12, 0, 1, 1);
+    MainLay->addWidget(native, 0, 0,13,1);
+    vidx = native->sizeHint().width();
+    vidy = native->sizeHint().height();
+    native->lower();
+    native->setStyleSheet("background-color: #779BF0;");
+    native->lateinit();
+    //qDebug() << lvl1->size();
     //font = scale().textResize(font,"Money Boost (10/10)",lvl1->size());
 }

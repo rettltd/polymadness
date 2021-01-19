@@ -105,7 +105,7 @@ void Stats::setup_layout()
                 "[<Рекорд-в-Survival>:    "+ toScore(saveNload().score(1)) +"]\n"
                 "[<Попыток-в-Survival>:   "+ toScore(saveNload().valueInt("survAttempts")) +"]\n"
                 "[<Всего-попыток>:        "+ toScore(saveNload().valueInt("survAttempts") + saveNload().valueInt("classicAttempts")) +"]\n"
-                "x: " + QString().number(fuckinShit::x) + " y: " + QString().number(fuckinShit::y)
+
                 ;
     }
 
